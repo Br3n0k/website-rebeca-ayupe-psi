@@ -1,0 +1,61 @@
+---
+import { SEO } from 'astro-seo';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title = 'Rebeca Ayupe Ferreira | Psicóloga - CRP 09/20699', 
+  description = 'Psicoterapia online para adultos e adolescentes. Entre em contato para agendar sua sessão.', 
+  image = '/images/og-image.jpg'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: 'website',
+          image: image,
+        },
+        optional: {
+          description: description,
+        }
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        creator: '@psirebeca_ayupe'
+      }}
+    />
+  </head>
+  <body>
+    <slot />
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true,
+          mirror: false
+        });
+      });
+    </script>
+  </body>
+</html> 

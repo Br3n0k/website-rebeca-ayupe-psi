@@ -1,0 +1,54 @@
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container-custom py-4">
+    <nav class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-primary">
+        Rebeca Ayupe
+        <span class="block text-sm font-medium text-gray-600">Psicóloga | CRP 09/20699</span>
+      </a>
+
+      <!-- Menu para desktop -->
+      <ul class="hidden md:flex space-x-8">
+        <li><a href="#inicio" class="text-gray-700 hover:text-primary transition-colors duration-300">Início</a></li>
+        <li><a href="#sobre" class="text-gray-700 hover:text-primary transition-colors duration-300">Sobre</a></li>
+        <li><a href="#servicos" class="text-gray-700 hover:text-primary transition-colors duration-300">Serviços</a></li>
+        <li><a href="#contato" class="text-gray-700 hover:text-primary transition-colors duration-300">Contato</a></li>
+      </ul>
+
+      <!-- Menu hambúrguer para mobile -->
+      <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="md:hidden hidden py-4">
+      <ul class="flex flex-col space-y-4">
+        <li><a href="#inicio" class="block text-gray-700 hover:text-primary transition-colors duration-300">Início</a></li>
+        <li><a href="#sobre" class="block text-gray-700 hover:text-primary transition-colors duration-300">Sobre</a></li>
+        <li><a href="#servicos" class="block text-gray-700 hover:text-primary transition-colors duration-300">Serviços</a></li>
+        <li><a href="#contato" class="block text-gray-700 hover:text-primary transition-colors duration-300">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+
+    // Fechar menu ao clicar em um link
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu?.classList.add('hidden');
+      });
+    });
+  });
+</script> 
