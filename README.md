@@ -62,11 +62,13 @@ Todos os comandos são executados a partir da raiz do projeto, a partir de um te
 ## Estrutura de Pastas
 
 ```text
-├── public/
-├── src/
-│   └── components/
+|── public_html/ (projeto compilado para servidor hospedado)
+├── public/ (assets estáticos)
+│   └── images/ (imagens do projeto)
+├── src/ (código fonte do projeto)
+│   └── components/ (componentes Astro/React/Vue/Svelte/Preact)
 │       └── index.astro
-│   └── pages/
+│   └── pages/ (páginas do projeto)
 │       └── index.astro
 └── package.json
 ```
