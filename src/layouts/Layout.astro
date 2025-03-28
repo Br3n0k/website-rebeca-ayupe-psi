@@ -1,6 +1,7 @@
 ---
 import { SEO } from 'astro-seo';
 import '../styles/global.css';
+import { CONFIG } from '../config';
 
 export interface Props {
   title?: string;
@@ -9,8 +10,8 @@ export interface Props {
 }
 
 const { 
-  title = 'Rebeca Ayupe Ferreira | Psicóloga - CRP 09/20699', 
-  description = 'Psicoterapia online para adultos e adolescentes. Entre em contato para agendar sua sessão.', 
+  title = `${CONFIG.nome} | ${CONFIG.titulo}`, 
+  description = CONFIG.descricaoSite, 
   image = '/images/og-image.jpg'
 } = Astro.props;
 ---
@@ -36,13 +37,18 @@ const {
         },
         optional: {
           description: description,
+        },
+        image: {
+          url: image,
+          alt: title,
         }
       }}
       twitter={{
         card: 'summary_large_image',
-        creator: '@psirebeca_ayupe'
+        creator: `@${CONFIG.instagram}`
       }}
     />
+    <meta property="og:url" content={CONFIG.siteUrl} />
   </head>
   <body>
     <slot />

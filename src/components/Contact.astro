@@ -1,4 +1,5 @@
 ---
+import { CONFIG } from '../config';
 ---
 
 <section id="contato" class="py-20 bg-white">
@@ -25,7 +26,7 @@
               </div>
               <div>
                 <h4 class="text-lg font-medium text-gray-900 mb-1">E-mail</h4>
-                <p class="text-gray-600">contato@rebecaayupe.com.br</p>
+                <p class="text-gray-600">{CONFIG.email}</p>
               </div>
             </div>
             
@@ -37,8 +38,8 @@
               </div>
               <div>
                 <h4 class="text-lg font-medium text-gray-900 mb-1">WhatsApp</h4>
-                <p class="text-gray-600">+55 (62) 98651-0128</p>
-                <a href="https://wa.me/5562986510128?text=Olá%20Dra.%20Rebeca%2C%20gostaria%20de%20obter%20mais%20informações%20sobre%20seus%20serviços%20de%20psicoterapia.%20Poderia%20me%20ajudar%3F" target="_blank" rel="noopener noreferrer" class="text-primary inline-flex items-center mt-2 font-medium hover:underline">
+                <p class="text-gray-600">{CONFIG.whatsapp}</p>
+                <a href={`https://wa.me/${CONFIG.whatsappFormatado}?text=${CONFIG.mensagens.geral}`} target="_blank" rel="noopener noreferrer" class="text-primary inline-flex items-center mt-2 font-medium hover:underline">
                   Enviar mensagem
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -55,8 +56,8 @@
               </div>
               <div>
                 <h4 class="text-lg font-medium text-gray-900 mb-1">Redes Sociais</h4>
-                <a href="https://www.instagram.com/psirebeca_ayupe/" target="_blank" rel="noopener noreferrer" class="text-primary inline-flex items-center font-medium hover:underline">
-                  @psirebeca_ayupe
+                <a href={CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" class="text-primary inline-flex items-center font-medium hover:underline">
+                  @{CONFIG.instagram}
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
@@ -70,7 +71,7 @@
             <ul class="space-y-2 text-gray-600">
               <li class="flex justify-between">
                 <span>Segunda a Sexta</span>
-                <span>08:00 - 18:00</span>
+                <span>{CONFIG.horarioAtendimento.split(',')[1]}</span>
               </li>
             </ul>
           </div>

@@ -1,9 +1,13 @@
+---
+import { CONFIG } from '../config';
+---
+
 <header class="bg-white shadow-sm sticky top-0 z-50">
   <div class="container-custom py-4">
     <nav class="flex justify-between items-center">
       <a href="/" class="text-2xl font-bold text-primary">
-        Rebeca Ayupe
-        <span class="block text-sm font-medium text-gray-600">Psicóloga | CRP 09/20699</span>
+        {CONFIG.nome.split(' ')[0]} {CONFIG.nome.split(' ')[1]}
+        <span class="block text-sm font-medium text-gray-600">{CONFIG.titulo}</span>
       </a>
 
       <!-- Menu para desktop -->

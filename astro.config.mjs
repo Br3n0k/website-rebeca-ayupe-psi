@@ -5,11 +5,18 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
+  site: 'https://rebecaayupe.psi.br',
+  // Remover a barra do Astro no rodapé
+  devToolbar: {
+    enabled: false,
+  },
 
   build: {
     format: 'file',
     assets: 'assets'
   },
 
-  compressHTML: true
+  compressHTML: true,
+
+  outDir: './public_html'
 });

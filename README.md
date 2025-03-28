@@ -13,6 +13,8 @@ Nesse projeto em especifico recebi algumas informações para o desenvolvimento 
 ## Informações de Contato
 - **Instagram:** [@psirebeca_ayupe](https://www.instagram.com/psirebeca_ayupe/)
 - **WhatsApp:** +55 62 98651-0128
+- **Email:** [psirebecaayupe@gmail.com](mailto:psirebecaayupe@gmail.com)
+- **Site:** [https://psirebecaayupe.com.br](https://psirebecaayupe.com.br)
 
 ## Especificações Técnicas
 - **Framework:** Astro
@@ -73,6 +75,6 @@ Todos os comandos são executados a partir da raiz do projeto, a partir de um te
 
 1. Adicione a foto da Dra. Rebeca Ayupe na pasta `public/images/` com o nome `rebeca_ayupe.jpg`
 2. Execute `bun run build` para gerar os arquivos estáticos
-3. Faça o upload da pasta `dist/` para o servidor Apache da Hostinger
+3. Faça o upload da pasta `public_html/` para o servidor Apache da Hostinger
 4. Configure o domínio e SSL conforme necessário
 5. Configure a CDN da Cloudflare para melhor desempenho
