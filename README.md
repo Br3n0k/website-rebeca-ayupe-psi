@@ -68,3 +68,11 @@ Todos os comandos são executados a partir da raiz do projeto, a partir de um te
 │       └── index.astro
 └── package.json
 ```
+
+## Colocando o site no ar
+
+1. Adicione a foto da Dra. Rebeca Ayupe na pasta `public/images/` com o nome `rebeca_ayupe.jpg`
+2. Execute `bun run build` para gerar os arquivos estáticos
+3. Faça o upload da pasta `dist/` para o servidor Apache da Hostinger
+4. Configure o domínio e SSL conforme necessário
+5. Configure a CDN da Cloudflare para melhor desempenho
