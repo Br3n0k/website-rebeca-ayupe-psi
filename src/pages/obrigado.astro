@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CONFIG } from '../config';
+---
+
+<Layout title="Mensagem Enviada | Rebeca Ayupe Psicóloga">
+  <Header />
+  <main>
+    <section class="py-20 bg-white">
+      <div class="container-custom">
+        <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+          <div class="bg-purple-50 rounded-xl p-12 shadow-sm">
+            <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Mensagem Enviada!</h1>
+            <p class="text-lg text-gray-700 mb-8">
+              Obrigada por entrar em contato. Sua mensagem foi recebida com sucesso e responderei o mais breve possível.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/" class="btn-secondary">
+                Voltar para o site
+              </a>
+              <a href={`https://wa.me/${CONFIG.whatsappFormatado}?text=${CONFIG.mensagens.geral}`} target="_blank" rel="noopener noreferrer" class="btn-primary">
+                <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.3547 4.55156C17.3906 2.58281 14.775 1.5 11.9953 1.5C6.25781 1.5 1.58906 6.16875 1.58906 11.9062C1.58906 13.7391 2.06719 15.5297 2.97656 17.1094L1.5 22.5L7.01719 21.0516C8.52656 21.8813 10.2422 22.3172 11.9906 22.3172H11.9953C17.7281 22.3172 22.5 17.6484 22.5 11.9109C22.5 9.13125 21.3188 6.52031 19.3547 4.55156ZM11.9953 20.5219C10.4297 20.5219 8.89687 20.1047 7.56094 19.3219L7.2 19.1016L4.05469 19.9406L4.90781 16.8844L4.66406 16.5094C3.80156 15.1219 3.34375 13.5375 3.34375 11.9062C3.34375 7.14375 7.23281 3.25469 12 3.25469C14.3109 3.25469 16.4859 4.14375 18.0984 5.76094C19.7109 7.37812 20.7469 9.55312 20.7422 11.9109C20.7422 16.6781 17.7578 20.5219 11.9953 20.5219ZM16.8891 14.0766C16.6219 13.9406 15.2766 13.2797 15.0328 13.1906C14.7891 13.0969 14.6109 13.0516 14.4328 13.3234C14.2547 13.5953 13.7344 14.2031 13.5797 14.3859C13.4297 14.5641 13.275 14.5875 13.0078 14.4516C11.5688 13.7297 10.6219 13.1578 9.67031 11.5266C9.41719 11.1094 9.96094 11.1422 10.4672 10.1297C10.5563 9.95156 10.5094 9.79687 10.4391 9.66094C10.3688 9.525 9.84375 8.17969 9.62344 7.64062C9.40781 7.11562 9.1875 7.19062 9.02812 7.18125C8.87813 7.17187 8.7 7.17187 8.52187 7.17187C8.34375 7.17187 8.05312 7.24219 7.80937 7.50937C7.56562 7.78125 6.86719 8.4375 6.86719 9.7875C6.86719 11.1375 7.84687 12.4406 7.98047 12.6187C8.11875 12.7969 9.83437 15.4312 12.4594 16.6266C14.1094 17.3906 14.7656 17.4562 15.6094 17.3203C16.1297 17.2359 17.2453 16.65 17.4656 16.0172C17.6859 15.3844 17.6859 14.8453 17.6156 14.7281C17.55 14.6016 17.3719 14.5266 17.1047 14.3906L16.8891 14.0766Z" />
+                </svg>
+                Falar pelo WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout> 

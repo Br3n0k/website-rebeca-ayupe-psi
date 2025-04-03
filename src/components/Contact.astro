@@ -83,7 +83,11 @@ import { CONFIG } from '../config';
         <div class="bg-white rounded-xl shadow-sm p-8 border border-gray-100">
           <h3 class="text-2xl font-bold text-gray-900 mb-6">Envie uma Mensagem</h3>
           
-          <form class="space-y-6">
+          <form action={`https://formspree.io/f/${CONFIG.formspreeId}`} method="POST" class="space-y-6">
+            <input type="hidden" name="_subject" value="Novo contato do site - Rebeca Ayupe" />
+            <input type="hidden" name="_next" value={`${CONFIG.siteUrl}/obrigado`} />
+            <input type="hidden" name="_cc" value={CONFIG.email} />
+            
             <div>
               <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
               <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Digite seu nome completo" required />
@@ -116,4 +120,9 @@ import { CONFIG } from '../config';
       </div>
     </div>
   </div>
-</section> 
+</section>
+
+<script>
+  // Não precisamos mais verificar o parâmetro na URL,
+  // pois agora usamos uma página de agradecimento separada (/obrigado)
+</script> 

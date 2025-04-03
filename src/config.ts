@@ -6,6 +6,9 @@ export const CONFIG = {
   email: import.meta.env.EMAIL || 'psirebecaayupe@gmail.com',
   instagram: import.meta.env.INSTAGRAM || 'psirebeca_ayupe',
   
+  // Formulário de contato
+  formspreeId: import.meta.env.FORMSPREE_ID || 'xdoelabdrebeca',
+  
   // URLs e links externos
   siteUrl: import.meta.env.URL || 'https://psirebecaayupe.com.br',
   instagramUrl: `https://instagram.com/${import.meta.env.INSTAGRAM || 'psirebeca_ayupe'}`,
