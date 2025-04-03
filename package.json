@@ -3,9 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "clean": "rm -rf node_modules/.vite",
+    "dev": "bun run clean && astro dev",
+    "build": "bun run clean && astro build",
+    "preview": "bun run clean && astro preview",
     "astro": "astro"
   },
   "dependencies": {
