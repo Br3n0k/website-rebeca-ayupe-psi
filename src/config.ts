@@ -25,9 +25,9 @@ export const CONFIG = {
     geral: 'Olá%20Dra.%20Rebeca%2C%20gostaria%20de%20agendar%20uma%20sessão%20de%20psicoterapia.%20Poderia%20me%20informar%20sobre%20horários%20disponíveis%3F',
     ansiedade: 'Olá%20Dra.%20Rebeca%2C%20gostaria%20de%20agendar%20uma%20sessão%20para%20tratar%20da%20ansiedade.%20Poderia%20me%20informar%20sobre%20horários%20disponíveis%3F',
     depressao: 'Olá%20Dra.%20Rebeca%2C%20gostaria%20de%20agendar%20uma%20sessão%20para%20tratar%20da%20depressão.%20Poderia%20me%20informar%20sobre%20horários%20disponíveis%3F',
-    tcc: 'Olá%20Dra.%20Rebeca%2C%20gostaria%20de%20agendar%20uma%20sessão%20para%20terapia%20cognitivo-comportamental.%20Poderia%20me%20informar%20sobre%20horários%20disponíveis%3F',
+    psicanalise: 'Olá%20Dra.%20Rebeca%2C%20gostaria%20de%20agendar%20uma%20sessão%20de%20psicoterapia%20com%20abordagem%20psicanalítica.%20Poderia%20me%20informar%20sobre%20horários%20disponíveis%3F',
   },
   
   // Meta tags
-  descricaoSite: 'Psicoterapia online para adultos e adolescentes com a Dra. Rebeca Ayupe (CRP 09/20699). Especialista em Terapia Cognitivo-Comportamental.',
+  descricaoSite: 'Psicoterapia online para adultos e adolescentes com a Dra. Rebeca Ayupe (CRP 09/20699). Abordagem Psicanalítica para ansiedade, depressão e desenvolvimento pessoal.',
 }; 
