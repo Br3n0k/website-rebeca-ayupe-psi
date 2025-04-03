@@ -110,3 +110,21 @@ Todos os comandos são executados a partir da raiz do projeto, a partir de um te
 3. Faça o upload da pasta `public_html/` para o servidor Apache da Hostinger
 4. Configure o domínio e SSL conforme necessário
 5. Configure a CDN da Cloudflare para melhor desempenho
+
+## Autor
+
+<div align="center">
+  
+### Desenvolvido com ❤️ por [Brendown Ferreira](https://github.com/Br3n0k)
+  
+  [![GitHub](https://img.shields.io/badge/GitHub-Br3n0k-black?style=for-the-badge&logo=github)](https://github.com/Br3n0k)
+  [![Portfolio](https://img.shields.io/badge/Portfolio-NokTech_Sistemas-purple?style=for-the-badge&logo=react)](https://noktech.com.br)
+
+  > "Transformando ideias em soluções digitais acessíveis para quem faz a diferença"
+</div>
+
+## Visualização do Site
+
+Abaixo está uma visualização completa do site implementado:
+
+![Visualização completa do site da Psicóloga Rebeca Ayupe](./screenshot.png)
