@@ -5,6 +5,9 @@ export const CONFIG = {
   whatsappFormatado: import.meta.env.WHATSAPP?.replace(/^\+/, '') || '5562986510128',
   email: import.meta.env.EMAIL || 'psirebecaayupe@gmail.com',
   instagram: import.meta.env.INSTAGRAM || 'psirebeca_ayupe',
+
+  // Google
+  googleTagManager: import.meta.env.GOOGLE_TAG_MANAGER || 'GTM-5LN975MJ',
   
   // Formulário de contato
   formspreeId: import.meta.env.FORMSPREE_ID || 'xdoelabdrebeca',

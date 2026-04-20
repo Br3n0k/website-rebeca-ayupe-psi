@@ -7,13 +7,17 @@ export interface Props {
   title?: string;
   description?: string;
   image?: string;
+  googleTagManager?: string;
 }
 
 const { 
   title = `${CONFIG.nome} | ${CONFIG.titulo}`, 
   description = CONFIG.descricaoSite, 
-  image = '/images/og-image.jpg'
+  image = '/images/og-image.jpg',
+  googleTagManager = CONFIG.googleTagManager
 } = Astro.props;
+
+const hasGoogleTagManager = Boolean(googleTagManager);
 ---
 
 <!DOCTYPE html>
@@ -22,6 +26,24 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    {hasGoogleTagManager && (
+      <>
+        <!-- Google Tag Manager -->
+        <script is:inline define:vars={{ googleTagManager }}>
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0];
+            var j = d.createElement(s);
+            var dl = l !== 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', googleTagManager);
+        </script>
+      </>
+    )}
+
     <!-- Favicons e ícones para várias plataformas -->
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
@@ -61,7 +83,20 @@ const {
     <meta property="og:url" content={CONFIG.siteUrl} />
   </head>
   <body>
+    {hasGoogleTagManager && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${googleTagManager}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+          title="Google Tag Manager"
+        ></iframe>
+      </noscript>
+    )}
+
     <slot />
+    
     <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script is:inline>
       document.addEventListener('DOMContentLoaded', function() {
