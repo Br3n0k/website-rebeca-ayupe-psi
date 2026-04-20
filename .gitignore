@@ -5,6 +5,10 @@ public_html/
 # generated types
 .astro/
 
+# Claude Code Review
+.claude/
+CLAUDE.md
+
 # dependencies
 node_modules/
 
@@ -32,3 +36,6 @@ pnpm-debug.log*
 # Lock files
 *.lockb
 *.lock
+
+# environment variables
+.env
