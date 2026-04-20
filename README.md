@@ -6,7 +6,7 @@
 
 ## Visão Geral
 
-Como parte de um projeto pessoal, estou desenvolvendo ferramentas para ajudar pessoas que vêm dedicando tempo e esforço para ajudar outras pessoas de forma popular ou até mesmo gratuitamente. Nosso objetivo é criar uma landing page para Rebeca Ayupe Ferreira, psicóloga com registro CRP 09/20699, especializada em psicoterapia online para adultos e adolescentes que atua em Goiânia - GO, com o intuito de ajudar a divulgar seu trabalho e atingir mais pessoas que buscam ajuda e não possuem condições de pagar por um serviço de psicólogo. A Dra. Rebeca Ayupe Ferreira oferece uma psicoterapia online de forma popular e acessível para todos.
+Como parte de um projeto pessoal, estou desenvolvendo ferramentas para ajudar pessoas que vêm dedicando tempo e esforço para ajudar outras pessoas de forma popular ou até mesmo gratuitamente. Nosso objetivo é criar um Website que para a Rebeca Ayupe Ferreira, psicóloga com registro CRP 09/20699, especializada em psicoterapia online para adultos e adolescentes que atua em Goiânia - GO, com o intuito de ajudar a divulgar seu trabalho e atingir mais pessoas que buscam ajuda e não possuem condições de pagar por um serviço de psicólogo. A Dra. Rebeca Ayupe Ferreira oferece uma psicoterapia online de forma popular e acessível para todos, o website irá funcionar parecido com uma vitrine virtual, com maximo de performance em SEO para maximizar as consultas e resultados na internet e mecanismos de pesquisa.
 
 ## Objetivo
 
@@ -118,8 +118,6 @@ Todos os comandos são executados a partir da raiz do projeto, a partir de um te
 ### Desenvolvido com ❤️ por [Brendown Ferreira](https://github.com/Br3n0k)
   
   [![GitHub](https://img.shields.io/badge/GitHub-Br3n0k-black?style=for-the-badge&logo=github)](https://github.com/Br3n0k)
-  [![Portfolio](https://img.shields.io/badge/Portfolio-NokTech_Sistemas-purple?style=for-the-badge&logo=react)](https://noktech.com.br)
-
   > "Transformando ideias em soluções digitais acessíveis para quem faz a diferença"
 </div>
 
