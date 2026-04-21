@@ -1,5 +1,6 @@
 ---
 import { SEO } from 'astro-seo';
+import '@fontsource-variable/inter';
 import '../styles/global.css';
 import { CONFIG } from '../config';
 
@@ -7,17 +8,73 @@ export interface Props {
   title?: string;
   description?: string;
   image?: string;
-  googleTagManager?: string;
+  canonical?: string;
+  noindex?: boolean;
 }
 
-const { 
-  title = `${CONFIG.nome} | ${CONFIG.titulo}`, 
-  description = CONFIG.descricaoSite, 
+const {
+  title = `${CONFIG.nome} | ${CONFIG.titulo}`,
+  description = CONFIG.descricaoSite,
   image = '/images/og-image.jpg',
-  googleTagManager = CONFIG.googleTagManager
+  canonical = new URL(Astro.url.pathname, CONFIG.siteUrl).toString(),
+  noindex = false,
 } = Astro.props;
 
-const hasGoogleTagManager = Boolean(googleTagManager);
+const gtmId = CONFIG.googleTagManager;
+const hasGtm = Boolean(gtmId);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: CONFIG.nome,
+  jobTitle: 'Psicóloga',
+  identifier: `CRP ${CONFIG.crp}`,
+  url: CONFIG.siteUrl,
+  image: new URL(image, CONFIG.siteUrl).toString(),
+  email: `mailto:${CONFIG.email}`,
+  telephone: CONFIG.whatsapp,
+  sameAs: [CONFIG.instagramUrl],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: CONFIG.cidade,
+    addressRegion: CONFIG.estado,
+    addressCountry: CONFIG.pais,
+  },
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: `${CONFIG.nome} — Psicóloga`,
+  description: CONFIG.descricaoSite,
+  url: CONFIG.siteUrl,
+  image: new URL(image, CONFIG.siteUrl).toString(),
+  telephone: CONFIG.whatsapp,
+  email: CONFIG.email,
+  priceRange: '$$',
+  areaServed: [
+    { '@type': 'City', name: CONFIG.cidade },
+    { '@type': 'Country', name: 'Brasil' },
+  ],
+  availableService: {
+    '@type': 'MedicalTherapy',
+    name: 'Psicoterapia online',
+    serviceType: 'Psicoterapia',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: CONFIG.cidade,
+    addressRegion: CONFIG.estado,
+    addressCountry: CONFIG.pais,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
+  sameAs: [CONFIG.instagramUrl],
+};
 ---
 
 <!DOCTYPE html>
@@ -25,68 +82,53 @@ const hasGoogleTagManager = Boolean(googleTagManager);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    {hasGoogleTagManager && (
-      <>
-        <!-- Google Tag Manager -->
-        <script is:inline define:vars={{ googleTagManager }}>
-          (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-            var f = d.getElementsByTagName(s)[0];
-            var j = d.createElement(s);
-            var dl = l !== 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-          })(window, document, 'script', 'dataLayer', googleTagManager);
-        </script>
-      </>
+
+    {hasGtm && (
+      <!-- Google Tag Manager -->
+      <script is:inline define:vars={{ gtmId }}>
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0];
+          var j = d.createElement(s);
+          var dl = l !== 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', gtmId);
+      </script>
     )}
 
-    <!-- Favicons e ícones para várias plataformas -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-    <link rel="manifest" href="/icons/site.webmanifest">
-    <link rel="icon" href="/icons/favicon.ico">
-    <meta name="msapplication-config" content="/icons/browserconfig.xml">
-    <meta name="msapplication-TileColor" content="#8b5cf6">
-    <meta name="theme-color" content="#ffffff">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/icons/site.webmanifest" />
+    <link rel="icon" href="/icons/favicon.ico" />
+    <meta name="msapplication-config" content="/icons/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#8b5cf6" />
+    <meta name="theme-color" content="#ffffff" />
+
     <SEO
       title={title}
       description={description}
+      canonical={canonical}
+      noindex={noindex}
       openGraph={{
-        basic: {
-          title: title,
-          type: 'website',
-          image: image,
-        },
-        optional: {
-          description: description,
-        },
-        image: {
-          url: image,
-          alt: title,
-        }
+        basic: { title, type: 'website', image: new URL(image, CONFIG.siteUrl).toString() },
+        optional: { description, locale: 'pt_BR', siteName: CONFIG.nome },
+        image: { url: new URL(image, CONFIG.siteUrl).toString(), alt: title },
       }}
-      twitter={{
-        card: 'summary_large_image',
-        creator: `@${CONFIG.instagram}`
-      }}
+      twitter={{ card: 'summary_large_image', creator: `@${CONFIG.instagram}` }}
     />
-    <meta property="og:url" content={CONFIG.siteUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   </head>
   <body>
-    {hasGoogleTagManager && (
+    {hasGtm && (
       <noscript>
         <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${googleTagManager}`}
+          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
           height="0"
           width="0"
           style="display:none;visibility:hidden"
@@ -96,17 +138,5 @@ const hasGoogleTagManager = Boolean(googleTagManager);
     )}
 
     <slot />
-    
-    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script is:inline>
-      document.addEventListener('DOMContentLoaded', function() {
-        AOS.init({
-          duration: 800,
-          easing: 'ease-in-out',
-          once: true,
-          mirror: false
-        });
-      });
-    </script>
   </body>
-</html> 
+</html>

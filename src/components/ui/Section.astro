@@ -1,0 +1,22 @@
+---
+interface Props {
+  id?: string;
+  bg?: 'white' | 'muted' | 'gradient';
+  class?: string;
+  as?: 'section' | 'article';
+}
+
+const { id, bg = 'white', class: extraClass = '', as: Tag = 'section' } = Astro.props;
+
+const bgs = {
+  white: 'bg-white',
+  muted: 'bg-purple-50',
+  gradient: 'bg-gradient-to-br from-violet-50 to-white',
+};
+---
+
+<Tag id={id} class={`py-16 md:py-20 ${bgs[bg]} ${extraClass}`}>
+  <div class="container-custom">
+    <slot />
+  </div>
+</Tag>

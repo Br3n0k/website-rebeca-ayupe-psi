@@ -1,0 +1,14 @@
+---
+interface Props {
+  accent?: boolean;
+  class?: string;
+}
+const { accent = false, class: extraClass = '' } = Astro.props;
+---
+
+<div class={`bg-white rounded-xl shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-lg ${extraClass}`}>
+  {accent && <div class="h-1 bg-primary"></div>}
+  <div class="p-6">
+    <slot />
+  </div>
+</div>

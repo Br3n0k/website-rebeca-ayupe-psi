@@ -1,0 +1,50 @@
+---
+type Variant = 'primary' | 'outline' | 'whatsapp';
+type Size = 'md' | 'lg';
+
+interface Props {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  external?: boolean;
+  type?: 'button' | 'submit';
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  external = false,
+  type = 'button',
+  class: extraClass = '',
+} = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 font-medium rounded-md transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2';
+
+const sizes: Record<Size, string> = {
+  md: 'py-2 px-6 text-base',
+  lg: 'py-3 px-8 text-lg',
+};
+
+const variants: Record<Variant, string> = {
+  primary: 'bg-primary text-white hover:bg-primary/90',
+  outline: 'text-primary border border-primary hover:bg-primary/5',
+  whatsapp: 'bg-[#25D366] text-white hover:bg-[#1faa53]',
+};
+
+const className = [base, sizes[size], variants[variant], extraClass].join(' ');
+const rel = external ? 'noopener noreferrer' : undefined;
+const target = external ? '_blank' : undefined;
+---
+
+{href ? (
+  <a href={href} class={className} rel={rel} target={target}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={className}>
+    <slot />
+  </button>
+)}

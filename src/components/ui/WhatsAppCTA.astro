@@ -1,0 +1,30 @@
+---
+import { CONFIG } from '../../config';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+
+type MensagemKey = keyof typeof CONFIG.mensagens;
+
+interface Props {
+  mensagem?: MensagemKey;
+  variant?: 'primary' | 'whatsapp' | 'outline';
+  size?: 'md' | 'lg';
+  label?: string;
+  class?: string;
+}
+
+const {
+  mensagem = 'geral',
+  variant = 'primary',
+  size = 'md',
+  label = 'Agendar Sessão',
+  class: extraClass = '',
+} = Astro.props;
+
+const href = `https://wa.me/${CONFIG.whatsappFormatado}?text=${CONFIG.mensagens[mensagem]}`;
+---
+
+<Button href={href} variant={variant} size={size} external class={extraClass}>
+  <Icon name="whatsapp" class="h-5 w-5" />
+  {label}
+</Button>

@@ -6,11 +6,8 @@ export const CONFIG = {
   email: import.meta.env.EMAIL || 'psirebecaayupe@gmail.com',
   instagram: import.meta.env.INSTAGRAM || 'psirebeca_ayupe',
 
-  // Google
-  googleTagManager: import.meta.env.GOOGLE_TAG_MANAGER || 'GTM-5LN975MJ',
-  
-  // Formulário de contato
-  formspreeId: import.meta.env.FORMSPREE_ID || 'xdoelabdrebeca',
+  // Google Tag Manager
+  googleTagManager: import.meta.env.GOOGLE_TAG_MANAGER?.trim() || '',
   
   // URLs e links externos
   siteUrl: import.meta.env.URL || 'https://psirebecaayupe.com.br',
@@ -33,4 +30,14 @@ export const CONFIG = {
   
   // Meta tags
   descricaoSite: 'Psicoterapia online para adultos e adolescentes com a Dra. Rebeca Ayupe (CRP 09/20699). Abordagem Psicanalítica para ansiedade, depressão e desenvolvimento pessoal.',
-}; 
+
+  // Localização (E-E-A-T / LocalBusiness)
+  cidade: 'Goiânia',
+  estado: 'GO',
+  pais: 'BR',
+  crp: '09/20699',
+
+  
+
+  //
+};

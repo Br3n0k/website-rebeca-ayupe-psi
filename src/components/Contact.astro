@@ -4,7 +4,7 @@ import { CONFIG } from '../config';
 
 <section id="contato" class="py-20 bg-white">
   <div class="container-custom">
-    <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto text-center mb-16">
       <h2 class="section-title">Entre em Contato</h2>
       <p class="section-subtitle">
         Estou disponível para esclarecer suas dúvidas e agendar sua primeira sessão
@@ -13,7 +13,7 @@ import { CONFIG } from '../config';
     
     <div class="flex flex-col lg:flex-row gap-12">
       <!-- Informações de contato -->
-      <div class="lg:w-1/2" data-aos="fade-up" data-aos-delay="100">
+      <div class="lg:w-1/2">
         <div class="bg-purple-50 rounded-xl p-8 h-full">
           <h3 class="text-2xl font-bold text-gray-900 mb-6">Informações de Contato</h3>
           
@@ -79,14 +79,16 @@ import { CONFIG } from '../config';
       </div>
       
       <!-- Formulário de Contato -->
-      <div class="lg:w-1/2" data-aos="fade-up" data-aos-delay="200">
+      <div class="lg:w-1/2">
         <div class="bg-white rounded-xl shadow-sm p-8 border border-gray-100">
           <h3 class="text-2xl font-bold text-gray-900 mb-6">Envie uma Mensagem</h3>
           
-          <form action={`https://formspree.io/f/${CONFIG.formspreeId}`} method="POST" class="space-y-6">
-            <input type="hidden" name="_subject" value="Novo contato do site - Rebeca Ayupe" />
-            <input type="hidden" name="_next" value={`${CONFIG.siteUrl}/obrigado`} />
-            <input type="hidden" name="_cc" value={CONFIG.email} />
+          <form action="/mail.php" method="POST" accept-charset="UTF-8" class="space-y-6">
+            <input type="hidden" name="redirect" value={CONFIG.siteUrl} />
+            <div class="hidden" aria-hidden="true">
+              <label for="company">Empresa</label>
+              <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+            </div>
             
             <div>
               <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
@@ -113,7 +115,7 @@ import { CONFIG } from '../config';
             </button>
             
             <p class="text-sm text-gray-500 text-center">
-              Ao enviar este formulário, você concorda com a nossa política de privacidade.
+              Ao enviar este formulário, seus dados serão usados apenas para retorno do contato solicitado.
             </p>
           </form>
         </div>

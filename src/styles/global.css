@@ -1,14 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --primary-color: #6D28D9;
-  --secondary-color: #8B5CF6;
-  --accent-color: #C4B5FD;
-  --background-color: #F9FAFB;
-  --text-color: #1F2937;
-  --light-text-color: #4B5563;
+@theme {
+  --color-primary: #6D28D9;
+  --color-secondary: #8B5CF6;
+  --color-accent: #C4B5FD;
+  --color-background: #F9FAFB;
+  --color-text: #1F2937;
+  --color-text-light: #4B5563;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.5s ease-in-out;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
 }
 
 html {
@@ -16,25 +29,25 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: var(--text-color);
-  background-color: var(--background-color);
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 @layer components {
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .btn-primary {
     @apply bg-primary text-white font-medium py-2 px-6 rounded-md transition duration-300 hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2;
   }
-  
+
   .section-title {
     @apply text-3xl md:text-4xl font-bold mb-6 text-gray-900;
   }
-  
+
   .section-subtitle {
     @apply text-xl text-gray-600 max-w-3xl mx-auto mb-12;
   }
-} 
+}

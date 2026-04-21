@@ -39,3 +39,9 @@ pnpm-debug.log*
 
 # environment variables
 .env
+
+# composer
+composer.lock
+
+# vendor
+vendor/
