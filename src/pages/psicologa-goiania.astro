@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import PageFAQ from '../components/ui/PageFAQ.astro';
+import WhatsAppCTA from '../components/ui/WhatsAppCTA.astro';
+import { CONFIG } from '../config';
+
+const title = `Psicóloga em Goiânia | ${CONFIG.nome} — CRP ${CONFIG.crp}`;
+const description = `Psicóloga em Goiânia (GO) com abordagem psicanalítica. Atendimento online e presencial para adultos e adolescentes. ${CONFIG.nome}, CRP ${CONFIG.crp}.`;
+
+const publico = [
+  { titulo: 'Adultos', texto: 'Pessoas em busca de autoconhecimento, lidando com ansiedade, luto, relações ou momentos de transição.' },
+  { titulo: 'Adolescentes', texto: 'Espaço de escuta para questões de identidade, vínculos, escola e construção da autonomia.' },
+  { titulo: 'Idosos', texto: 'Acolhimento em fases de revisão de vida, perdas, aposentadoria e ressignificação.' },
+];
+
+const faq = [
+  { pergunta: 'Você atende presencialmente em Goiânia?', resposta: `Sim, atendo em Goiânia além do atendimento online para todo o Brasil. Combinamos local e horário pelo WhatsApp.` },
+  { pergunta: 'Qual sua abordagem?', resposta: 'Trabalho com Psicanálise, com leitura especialmente influenciada por Winnicott. É uma escuta atenta da sua história, em ambiente seguro e sem julgamentos.' },
+  { pergunta: 'Quanto custa uma sessão?', resposta: 'O valor é informado no primeiro contato. Trabalho com particular e posso fornecer recibo para reembolso de plano.' },
+  { pergunta: 'Como agendar?', resposta: 'O contato é feito pelo WhatsApp. Combinamos uma primeira conversa e seguimos a partir daí.' },
+];
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  <Breadcrumbs items={[{ label: 'Psicóloga em Goiânia' }]} />
+  <main>
+    <PageHero
+      title="Psicóloga em Goiânia"
+      subtitle={`${CONFIG.nome}, CRP ${CONFIG.crp}. Atendimento clínico em Goiânia (GO) e online em todo o Brasil, com abordagem psicanalítica.`}
+      ctaMensagem="geral"
+      secondaryHref="/atendimento-online"
+      secondaryLabel="Quero atendimento online"
+    />
+
+    <Section bg="white">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title text-center">Atendimento clínico em Goiânia</h2>
+        <p class="section-subtitle text-center">
+          Sou psicóloga registrada no Conselho Regional de Psicologia (CRP {CONFIG.crp}), com formação em Psicologia pela Faculdade Adventista do Paraná e prática orientada pela Psicanálise.
+        </p>
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-4 mt-8">
+          <p>
+            Em Goiânia, ofereço um espaço terapêutico voltado para pessoas que desejam compreender melhor a si mesmas, lidar com sofrimentos psíquicos e construir uma vida mais autêntica.
+          </p>
+          <p>
+            Cada processo é único: respeitamos seu tempo, sua história e suas escolhas. Não trabalho com promessas de cura rápida — trabalho com escuta consistente, ética profissional e cuidado clínico.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section bg="muted">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="section-title text-center">Quem busca acompanhamento</h2>
+        <div class="grid md:grid-cols-3 gap-6 mt-10">
+          {publico.map((p) => (
+            <Card accent>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">{p.titulo}</h3>
+              <p class="text-gray-700">{p.texto}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Section>
+
+    <PageFAQ itens={faq} bg="white" />
+
+    <Section bg="gradient">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="section-title">Pronto para começar?</h2>
+        <p class="section-subtitle">Envie uma mensagem pelo WhatsApp e combinamos sua primeira sessão em Goiânia ou online.</p>
+        <div class="mt-6"><WhatsAppCTA mensagem="geral" label="Falar pelo WhatsApp" size="lg" /></div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

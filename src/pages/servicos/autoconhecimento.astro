@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import Section from '../../components/ui/Section.astro';
+import Card from '../../components/ui/Card.astro';
+import PageFAQ from '../../components/ui/PageFAQ.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import ServiceSchema from '../../components/ui/ServiceSchema.astro';
+import { CONFIG } from '../../config';
+
+const title = 'Terapia para Autoconhecimento | Psicanálise Online e em Goiânia';
+const description = `Psicoterapia voltada ao autoconhecimento, com abordagem psicanalítica. Atendimento online e em Goiânia com ${CONFIG.nome} (CRP ${CONFIG.crp}).`;
+
+const beneficios = [
+  { titulo: 'Compreender escolhas', texto: 'Por que repito certos padrões? O que está por trás das minhas decisões?' },
+  { titulo: 'Reconhecer sentimentos', texto: 'Dar nome ao que sente, sem precisar suprimir ou racionalizar tudo.' },
+  { titulo: 'Cuidar das relações', texto: 'Olhar para os vínculos com mais consciência e menos repetição automática.' },
+  { titulo: 'Construir autenticidade', texto: 'Aproximar-se de uma vida mais coerente com quem você realmente é.' },
+];
+
+const faq = [
+  { pergunta: 'Preciso ter um problema para fazer terapia?', resposta: 'Não. Buscar autoconhecimento é uma motivação legítima e comum. Terapia é um espaço de cuidado, não só de crise.' },
+  { pergunta: 'Quanto tempo dura o processo?', resposta: 'Não existe prazo fixo. Cada pessoa segue o ritmo possível e necessário. Conversamos sobre o caminho ao longo do trabalho.' },
+  { pergunta: 'Posso fazer terapia online para autoconhecimento?', resposta: 'Sim. O atendimento online é totalmente compatível com esse tipo de demanda.' },
+];
+---
+
+<Layout title={title} description={description}>
+  <ServiceSchema name="Psicoterapia para autoconhecimento" description={description} />
+  <Header />
+  <Breadcrumbs items={[{ label: 'Serviços', href: '/#servicos' }, { label: 'Autoconhecimento' }]} />
+  <main>
+    <PageHero
+      title="Terapia para Autoconhecimento"
+      subtitle="Um espaço para olhar para si com mais profundidade, compreender suas escolhas e construir uma vida mais autêntica."
+      ctaMensagem="geral"
+      secondaryHref="/sobre"
+      secondaryLabel="Conheça minha abordagem"
+    />
+
+    <Section bg="white">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="section-title text-center">O que o autoconhecimento abre</h2>
+        <div class="grid md:grid-cols-2 gap-6 mt-10">
+          {beneficios.map((b) => (
+            <Card accent>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{b.titulo}</h3>
+              <p class="text-gray-700">{b.texto}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Section>
+
+    <Section bg="muted">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title text-center">A escuta psicanalítica</h2>
+        <div class="mt-8 space-y-4 text-gray-700 text-lg">
+          <p>A psicanálise convida você a falar livremente — sem roteiro, sem precisar ter resposta pronta. É a partir desse falar que aspectos antes invisíveis começam a aparecer.</p>
+          <p>O autoconhecimento, nessa perspectiva, não é uma técnica: é um processo de encontro com você mesmo, conduzido em parceria com a clínica.</p>
+        </div>
+      </div>
+    </Section>
+
+    <PageFAQ itens={faq} bg="white" />
+
+    <Section bg="gradient">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="section-title">Quer começar essa jornada?</h2>
+        <div class="mt-6"><WhatsAppCTA mensagem="geral" label="Agendar primeira sessão" size="lg" /></div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

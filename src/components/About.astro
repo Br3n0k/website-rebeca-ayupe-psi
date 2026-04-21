@@ -1,79 +1,82 @@
 ---
+import { Image } from 'astro:assets';
 import { CONFIG } from '../config';
-import Image from '../assets/rebeca_ayupe3.avif';
+import Section from './ui/Section.astro';
+import retrato from '../assets/rebeca_ayupe3.avif';
 
+const credenciais = [
+  { titulo: 'Formação', valor: 'Psicologia' },
+  { titulo: 'Abordagem', valor: 'Psicanálise - Winnicott' },
+  { titulo: 'Experiência', valor: 'Adolescentes, Adultos, Idosos' },
+];
+
+const tags = [
+  'Acompanhamento psicológico',
+  'Ansiedade',
+  'Angústia',
+  'Adolescência',
+  'Depressão',
+  'Desenvolvimento pessoal',
+  'Estresse',
+  'Insônia',
+  'Inteligência emocional',
+  'Orientação vocacional',
+];
 ---
 
-<section id="sobre" class="py-20 bg-white">
-  <div class="container-custom">
-    <div class="max-w-3xl mx-auto text-center mb-16">
-      <h2 class="section-title">Sobre Mim</h2>
-      <p class="section-subtitle">
-        Conheça mais sobre minha trajetória e abordagem como psicóloga
-      </p>
-    </div>
-    
-    <div class="flex flex-col md:flex-row items-center gap-12">
-      <div class="md:w-2/5">
-        <img 
-          src={Image.src} 
-          alt="Psicóloga Rebeca Ayupe" 
-          class="w-full h-auto rounded-2xl shadow-lg"
-          width="450"
-          height="600"
-        />
-      </div>
-      
-      <div class="md:w-3/5">
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">{CONFIG.nome}</h3>
-        <h4 class="text-lg font-medium text-primary mb-6">{CONFIG.titulo}</h4>
-        
-        <div class="space-y-6 text-gray-700">
-          <p>
-            Olá, me chamo Rebeca, sou psicóloga clínica formada pela Faculdade Adventista do Paraná (FAP) e estou feliz que você decidiu dar o primeiro passo e procurar alguém para te acompanhar em sua jornada. 🙂
-          </p>
-          
-          <p>
-            Meus atendimentos são realizados a partir da psicanálise e meu objetivo é promover um ambiente seguro e acolhedor, te auxiliando a alcançar seus objetivos e se desenvolver de maneira mais autêntica e saudável. O autoconhecimento abre as portas para transformação, e meu compromisso é estar ao seu lado nesse incrível caminho de descobertas e possibilidades.
-          </p>
+<Section id="sobre" bg="white">
+  <div class="max-w-3xl mx-auto text-center mb-16">
+    <h2 class="section-title">Sobre Mim</h2>
+    <p class="section-subtitle">
+      Conheça mais sobre minha trajetória e abordagem como psicóloga
+    </p>
+  </div>
 
-          <p>
-            Bem vindo ao seu espaço de encontro consigo mesmo e cuidado com seu bem estar emocional 💛
-          </p>
-        </div>
-        
-        <div class="mt-8 flex flex-wrap gap-4">
+  <div class="flex flex-col md:flex-row items-center gap-12">
+    <div class="md:w-2/5">
+      <Image
+        src={retrato}
+        alt={`Psicóloga ${CONFIG.nome}`}
+        widths={[300, 450, 600]}
+        sizes="(min-width: 768px) 40vw, 90vw"
+        format="webp"
+        loading="lazy"
+        class="w-full h-auto rounded-2xl shadow-lg"
+      />
+    </div>
+
+    <div class="md:w-3/5">
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">{CONFIG.nome}</h3>
+      <h4 class="text-lg font-medium text-primary mb-6">{CONFIG.titulo}</h4>
+
+      <div class="space-y-6 text-gray-700">
+        <p>
+          Olá, me chamo Rebeca, sou psicóloga clínica formada pela Faculdade Adventista do Paraná (FAP) e estou feliz que você decidiu dar o primeiro passo e procurar alguém para te acompanhar em sua jornada.
+        </p>
+        <p>
+          Meus atendimentos são realizados a partir da psicanálise e meu objetivo é promover um ambiente seguro e acolhedor, te auxiliando a alcançar seus objetivos e se desenvolver de maneira mais autêntica e saudável. O autoconhecimento abre as portas para transformação, e meu compromisso é estar ao seu lado nesse incrível caminho de descobertas e possibilidades.
+        </p>
+        <p>
+          Bem-vindo ao seu espaço de encontro consigo mesmo e cuidado com seu bem-estar emocional.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-4">
+        {credenciais.map(({ titulo, valor }) => (
           <div class="bg-purple-50 rounded-lg p-4 flex flex-col items-center text-center w-full sm:w-auto sm:min-w-[165px]">
-            <span class="text-primary text-xl font-bold mb-1">Formação</span>
-            <span class="text-gray-600">Psicologia</span>
+            <span class="text-primary text-xl font-bold mb-1">{titulo}</span>
+            <span class="text-gray-600">{valor}</span>
           </div>
-          
-          <div class="bg-purple-50 rounded-lg p-4 flex flex-col items-center text-center w-full sm:w-auto sm:min-w-[165px]">
-            <span class="text-primary text-xl font-bold mb-1">Abordagem</span>
-            <span class="text-gray-600">Psicanálise - Winnicott</span>
-          </div>
-          
-          <div class="bg-purple-50 rounded-lg p-4 flex flex-col items-center text-center w-full sm:w-auto sm:min-w-[165px]">
-            <span class="text-primary text-xl font-bold mb-1">Experiência</span>
-            <span class="text-gray-600">Adolescentes, Adultos, Idosos</span>
-          </div>
-        </div>
-        
-        <div class="mt-8">
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Acompanhamento psicológico</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Ansiedade</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Angústia</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Adolescência</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Depressão</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Desenvolvimento pessoal</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Estresse</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Insônia</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Inteligência emocional</span>
-            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">Orientação vocacional</span>
-          </div>
+        ))}
+      </div>
+
+      <div class="mt-8">
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm font-medium">{tag}</span>
+          ))}
         </div>
       </div>
     </div>
   </div>
-</section> 
+</Section>

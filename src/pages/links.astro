@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/ui/Icon.astro';
+import { CONFIG } from '../config';
+import retrato from '../assets/rebeca_ayupe3.avif';
+
+const title = `${CONFIG.nome} | Links`;
+const description = `Links oficiais da Psicóloga ${CONFIG.nome} (CRP ${CONFIG.crp}): WhatsApp, Instagram, agendamento e páginas do site.`;
+
+const whatsappHref = `https://wa.me/${CONFIG.whatsappFormatado}?text=${CONFIG.mensagens.geral}`;
+
+type IconName = 'whatsapp' | 'instagram' | 'mail' | 'arrow-right' | 'check-circle' | 'link';
+
+interface LinkItem {
+  href: string;
+  label: string;
+  sub?: string;
+  icon: IconName;
+  primary?: boolean;
+  external?: boolean;
+}
+
+const links: LinkItem[] = [
+  { href: whatsappHref, label: 'Agendar pelo WhatsApp', sub: 'Resposta rápida', icon: 'whatsapp', primary: true, external: true },
+  { href: CONFIG.instagramUrl, label: `@${CONFIG.instagram}`, sub: 'Instagram', icon: 'instagram', external: true },
+  { href: '/atendimento-online', label: 'Atendimento online', sub: 'Para todo o Brasil', icon: 'arrow-right' },
+  { href: '/psicologa-goiania', label: 'Psicóloga em Goiânia', sub: 'Atendimento presencial e online', icon: 'arrow-right' },
+  { href: '/servicos/ansiedade', label: 'Terapia para ansiedade', icon: 'check-circle' },
+  { href: '/servicos/depressao', label: 'Terapia para depressão', icon: 'check-circle' },
+  { href: '/servicos/adolescentes', label: 'Atendimento de adolescentes', icon: 'check-circle' },
+  { href: '/servicos/autoconhecimento', label: 'Autoconhecimento', icon: 'check-circle' },
+  { href: `mailto:${CONFIG.email}`, label: CONFIG.email, sub: 'E-mail', icon: 'mail', external: true },
+  { href: '/', label: 'Site oficial', icon: 'link' },
+];
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-gradient-to-br from-violet-50 via-white to-purple-50 px-4 py-10">
+    <div class="max-w-md mx-auto">
+      <header class="text-center mb-8">
+        <Image
+          src={retrato}
+          alt={CONFIG.nome}
+          widths={[160, 240]}
+          sizes="160px"
+          format="webp"
+          loading="eager"
+          class="w-32 h-32 mx-auto rounded-full object-cover shadow-lg ring-4 ring-white"
+        />
+        <h1 class="mt-5 text-2xl font-bold text-gray-900">{CONFIG.nome}</h1>
+        <p class="text-primary font-medium">{CONFIG.titulo}</p>
+        <p class="mt-2 text-sm text-gray-600">Psicoterapia online · Goiânia / Brasil</p>
+      </header>
+
+      <ul class="space-y-3">
+        {links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              target={l.external ? '_blank' : undefined}
+              rel={l.external ? 'noopener noreferrer' : undefined}
+              class={`flex items-center gap-4 p-4 rounded-xl shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${l.primary ? 'bg-primary text-white' : 'bg-white text-gray-900'}`}
+            >
+              <span class={`flex items-center justify-center w-10 h-10 rounded-full shrink-0 ${l.primary ? 'bg-white/15' : 'bg-primary/10 text-primary'}`}>
+                <Icon name={l.icon} class="h-5 w-5" />
+              </span>
+              <span class="flex-1">
+                <span class="block font-semibold leading-tight">{l.label}</span>
+                {l.sub && <span class={`block text-sm ${l.primary ? 'text-white/85' : 'text-gray-500'}`}>{l.sub}</span>}
+              </span>
+              <Icon name="arrow-right" class={`h-4 w-4 ${l.primary ? 'text-white/80' : 'text-gray-400'}`} />
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <footer class="mt-10 text-center text-xs text-gray-500">
+        <p>CRP {CONFIG.crp} · {CONFIG.cidade}/{CONFIG.estado}</p>
+      </footer>
+    </div>
+  </main>
+</Layout>

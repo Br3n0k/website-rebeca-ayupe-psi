@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import About from '../components/About.astro';
+import PsychoanalysisApproach from '../components/PsychoanalysisApproach.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Section from '../components/ui/Section.astro';
+import WhatsAppCTA from '../components/ui/WhatsAppCTA.astro';
+import { CONFIG } from '../config';
+
+const title = `Sobre | ${CONFIG.nome} — Psicóloga (CRP ${CONFIG.crp})`;
+const description = `Conheça ${CONFIG.nome}, psicóloga clínica (CRP ${CONFIG.crp}) com abordagem psicanalítica. Atendimento de adultos e adolescentes, online e em Goiânia.`;
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  <Breadcrumbs items={[{ label: 'Sobre' }]} />
+  <main>
+    <About />
+    <PsychoanalysisApproach />
+    <Section bg="gradient">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="section-title">Vamos conversar?</h2>
+        <p class="section-subtitle">Se você sentiu identificação com meu trabalho, podemos marcar uma primeira sessão.</p>
+        <div class="mt-6"><WhatsAppCTA mensagem="geral" label="Agendar primeira sessão" size="lg" /></div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

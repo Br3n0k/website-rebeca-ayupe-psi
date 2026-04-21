@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import Icon from '../components/ui/Icon.astro';
+import WhatsAppCTA from '../components/ui/WhatsAppCTA.astro';
+import PageFAQ from '../components/ui/PageFAQ.astro';
+import ServiceSchema from '../components/ui/ServiceSchema.astro';
+import { CONFIG } from '../config';
+
+const title = 'Psicoterapia Online | Atendimento por Vídeo em Todo o Brasil';
+const description = `Psicoterapia online com a Psicóloga ${CONFIG.nome} (CRP ${CONFIG.crp}). Atendimento por vídeo para adultos e adolescentes em todo o Brasil, com abordagem psicanalítica.`;
+
+const beneficios = [
+  { titulo: 'Conforto e privacidade', texto: 'Sessões no ambiente que você escolher, sem deslocamento.' },
+  { titulo: 'Continuidade do cuidado', texto: 'Mantenha sua terapia mesmo em viagens, mudanças ou rotinas intensas.' },
+  { titulo: 'Acesso de qualquer lugar', texto: 'Atendimento para todo o Brasil — basta internet estável.' },
+  { titulo: 'Mesma escuta clínica', texto: 'Profundidade da psicanálise, conduzida por psicóloga registrada no CRP.' },
+];
+
+const passos = [
+  'Você envia uma mensagem pelo WhatsApp e combinamos um horário.',
+  'Recebe o link da videochamada antes da sessão.',
+  'Conversamos por 50 minutos em ambiente confidencial.',
+  'Definimos juntos a frequência ideal para o seu processo.',
+];
+
+const faq = [
+  { pergunta: 'Atendimento online é tão eficaz quanto presencial?', resposta: 'Sim. Estudos e a prática clínica mostram que a psicoterapia online tem eficácia equivalente para a maioria das demandas, mantendo o vínculo e a profundidade do trabalho.' },
+  { pergunta: 'Em quais cidades você atende?', resposta: 'Atendo pessoas adultas e adolescentes em todo o Brasil de forma online, e presencialmente em Goiânia.' },
+  { pergunta: 'Que plataforma é usada?', resposta: 'Utilizo plataformas seguras de videochamada. Você recebe o link antes de cada sessão.' },
+  { pergunta: 'Como funciona o pagamento?', resposta: 'O combinado é feito após a primeira conversa. Aceito Pix e transferência bancária.' },
+  { pergunta: 'Atende convênio?', resposta: 'Não atendo por convênio, apenas particular. Posso fornecer recibo para reembolso quando o seu plano oferecer.' },
+];
+---
+
+<Layout title={title} description={description}>
+  <ServiceSchema name="Psicoterapia online" description={description} />
+  <Header />
+  <Breadcrumbs items={[{ label: 'Atendimento Online' }]} />
+  <main>
+    <PageHero
+      title="Psicoterapia Online em todo o Brasil"
+      subtitle={`Atendimento por vídeo com escuta psicanalítica para adultos e adolescentes. Conduzido pela Psicóloga ${CONFIG.nome}, CRP ${CONFIG.crp}.`}
+      ctaMensagem="geral"
+      secondaryHref="/sobre"
+      secondaryLabel="Conheça meu trabalho"
+    />
+
+    <Section bg="white">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title text-center">Para quem é a terapia online</h2>
+        <p class="section-subtitle text-center">
+          Pessoas que buscam um espaço de escuta profissional sem abrir mão da rotina, do conforto de casa ou que moram longe de uma referência clínica de confiança.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-10">
+        {beneficios.map((b) => (
+          <Card>
+            <div class="flex gap-3 items-start">
+              <Icon name="check-circle" class="h-6 w-6 text-primary mt-1 shrink-0" />
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">{b.titulo}</h3>
+                <p class="text-gray-700">{b.texto}</p>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Section>
+
+    <Section bg="muted">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title text-center">Como funciona</h2>
+        <ol class="mt-10 space-y-4">
+          {passos.map((p, i) => (
+            <li class="flex gap-4 items-start bg-white rounded-xl p-5 shadow-sm">
+              <span class="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-white font-bold shrink-0">{i + 1}</span>
+              <p class="text-gray-700 pt-1">{p}</p>
+            </li>
+          ))}
+        </ol>
+        <div class="mt-10 text-center">
+          <WhatsAppCTA mensagem="geral" label="Quero agendar minha primeira sessão" size="lg" />
+        </div>
+      </div>
+    </Section>
+
+    <PageFAQ itens={faq} />
+
+    <Section bg="white">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="section-title">Veja também</h2>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <a href="/psicologa-goiania" class="text-primary hover:underline">Psicóloga em Goiânia</a>
+          <span class="text-gray-300">·</span>
+          <a href="/servicos/ansiedade" class="text-primary hover:underline">Terapia para ansiedade</a>
+          <span class="text-gray-300">·</span>
+          <a href="/servicos/depressao" class="text-primary hover:underline">Terapia para depressão</a>
+          <span class="text-gray-300">·</span>
+          <a href="/servicos/adolescentes" class="text-primary hover:underline">Atendimento de adolescentes</a>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

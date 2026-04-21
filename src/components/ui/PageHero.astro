@@ -1,0 +1,39 @@
+---
+import Section from './Section.astro';
+import WhatsAppCTA from './WhatsAppCTA.astro';
+import Button from './Button.astro';
+import type { CONFIG as Cfg } from '../../config';
+
+type MensagemKey = keyof typeof Cfg.mensagens;
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  ctaMensagem?: MensagemKey;
+  ctaLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  title,
+  subtitle,
+  ctaMensagem = 'geral',
+  ctaLabel = 'Agendar pelo WhatsApp',
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props;
+---
+
+<Section bg="gradient" class="pt-12 md:pt-16">
+  <div class="max-w-3xl mx-auto text-center">
+    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">{title}</h1>
+    {subtitle && <p class="text-lg md:text-xl text-gray-700 mb-8">{subtitle}</p>}
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <WhatsAppCTA mensagem={ctaMensagem} label={ctaLabel} size="lg" />
+      {secondaryHref && secondaryLabel && (
+        <Button href={secondaryHref} variant="outline" size="lg">{secondaryLabel}</Button>
+      )}
+    </div>
+  </div>
+</Section>

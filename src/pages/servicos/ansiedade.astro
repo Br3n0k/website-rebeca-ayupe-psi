@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import Section from '../../components/ui/Section.astro';
+import Icon from '../../components/ui/Icon.astro';
+import PageFAQ from '../../components/ui/PageFAQ.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import ServiceSchema from '../../components/ui/ServiceSchema.astro';
+import { CONFIG } from '../../config';
+
+const title = 'Terapia para Ansiedade | Psicoterapia Online e em Goiânia';
+const description = `Psicoterapia para ansiedade com abordagem psicanalítica. Atendimento online e em Goiânia com ${CONFIG.nome} (CRP ${CONFIG.crp}).`;
+
+const sinais = [
+  'Preocupação constante e difícil de controlar',
+  'Insônia, sono leve ou despertar cansado',
+  'Tensão muscular, dores de cabeça ou no estômago',
+  'Sensação de aperto no peito ou falta de ar',
+  'Irritabilidade, dificuldade de concentração',
+  'Evitar situações por medo antecipado',
+];
+
+const faq = [
+  { pergunta: 'A terapia substitui o uso de remédio?', resposta: 'A indicação medicamentosa cabe ao médico (psiquiatra). A psicoterapia atua em paralelo, ajudando a compreender e elaborar o que sustenta a ansiedade.' },
+  { pergunta: 'Em quanto tempo vejo resultado?', resposta: 'Cada processo é único. Muitas pessoas relatam alívio nas primeiras semanas, mas o trabalho mais profundo acontece ao longo do tempo.' },
+  { pergunta: 'Preciso ter um diagnóstico para começar?', resposta: 'Não. Você pode buscar ajuda a partir do desconforto que sente, sem precisar de diagnóstico prévio.' },
+];
+---
+
+<Layout title={title} description={description}>
+  <ServiceSchema name="Psicoterapia para ansiedade" description={description} />
+  <Header />
+  <Breadcrumbs items={[{ label: 'Serviços', href: '/#servicos' }, { label: 'Ansiedade' }]} />
+  <main>
+    <PageHero
+      title="Terapia para Ansiedade"
+      subtitle="Um espaço para compreender o que está por trás da ansiedade e aprender a viver de forma mais leve, sem se anular."
+      ctaMensagem="ansiedade"
+      ctaLabel="Quero conversar sobre ansiedade"
+      secondaryHref="/atendimento-online"
+      secondaryLabel="Atendimento online"
+    />
+
+    <Section bg="white">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title">Sinais que merecem atenção</h2>
+        <p class="section-subtitle">A ansiedade é uma resposta humana — quando passa a atrapalhar a vida cotidiana, vale buscar ajuda profissional.</p>
+        <ul class="mt-8 grid sm:grid-cols-2 gap-3">
+          {sinais.map((s) => (
+            <li class="flex items-start gap-3 bg-purple-50 p-4 rounded-lg">
+              <Icon name="check" class="h-5 w-5 text-primary mt-1 shrink-0" />
+              <span class="text-gray-700">{s}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
+
+    <Section bg="muted">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title text-center">Como a psicanálise ajuda</h2>
+        <div class="mt-8 space-y-4 text-gray-700 text-lg">
+          <p>A escuta psicanalítica busca compreender <strong>o que a ansiedade está tentando dizer</strong>, em vez de apenas silenciar o sintoma.</p>
+          <p>No espaço terapêutico, é possível identificar repetições, conflitos internos e questões que sustentam o sofrimento — abrindo espaço para escolhas mais conscientes.</p>
+          <p>Trabalhamos no seu tempo, sem fórmulas prontas, em um ambiente confidencial e acolhedor.</p>
+        </div>
+      </div>
+    </Section>
+
+    <PageFAQ itens={faq} bg="white" />
+
+    <Section bg="gradient">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="section-title">Buscar ajuda é um ato de cuidado</h2>
+        <div class="mt-6"><WhatsAppCTA mensagem="ansiedade" label="Agendar minha primeira sessão" size="lg" /></div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

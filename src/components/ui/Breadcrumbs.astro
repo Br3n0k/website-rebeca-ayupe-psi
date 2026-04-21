@@ -1,0 +1,44 @@
+---
+import { CONFIG } from '../../config';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const allItems: Crumb[] = [{ label: 'Início', href: '/' }, ...items];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: allItems.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    item: c.href ? new URL(c.href, CONFIG.siteUrl).toString() : undefined,
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="bg-purple-50/50">
+  <div class="container-custom py-3">
+    <ol class="flex flex-wrap items-center text-sm text-gray-600 gap-2">
+      {allItems.map((c, i) => (
+        <li class="flex items-center gap-2">
+          {c.href && i < allItems.length - 1 ? (
+            <a href={c.href} class="hover:text-primary">{c.label}</a>
+          ) : (
+            <span class="text-gray-900 font-medium" aria-current="page">{c.label}</span>
+          )}
+          {i < allItems.length - 1 && <span class="text-gray-400">/</span>}
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

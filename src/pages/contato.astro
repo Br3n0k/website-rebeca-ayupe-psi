@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Contact from '../components/Contact.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import { CONFIG } from '../config';
+
+const title = `Contato | ${CONFIG.nome} — Psicóloga`;
+const description = `Entre em contato com a Psicóloga ${CONFIG.nome} (CRP ${CONFIG.crp}) por WhatsApp, e-mail ou Instagram. Atendimento online e em Goiânia.`;
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  <Breadcrumbs items={[{ label: 'Contato' }]} />
+  <main>
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

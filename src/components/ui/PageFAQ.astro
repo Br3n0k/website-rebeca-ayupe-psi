@@ -1,0 +1,45 @@
+---
+import Section from './Section.astro';
+import Icon from './Icon.astro';
+
+interface Item {
+  pergunta: string;
+  resposta: string;
+}
+interface Props {
+  titulo?: string;
+  itens: Item[];
+  bg?: 'white' | 'muted' | 'gradient';
+}
+
+const { titulo = 'Perguntas Frequentes', itens, bg = 'muted' } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: itens.map((i) => ({
+    '@type': 'Question',
+    name: i.pergunta,
+    acceptedAnswer: { '@type': 'Answer', text: i.resposta },
+  })),
+};
+---
+
+<Section bg={bg}>
+  <div class="max-w-3xl mx-auto">
+    <h2 class="section-title text-center">{titulo}</h2>
+    <div class="mt-10 space-y-4">
+      {itens.map((i) => (
+        <details class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <summary class="flex justify-between items-center cursor-pointer p-5 font-medium text-gray-900 list-none">
+            <span>{i.pergunta}</span>
+            <Icon name="chevron-down" class="h-5 w-5 text-primary transition-transform duration-200 group-open:rotate-180" />
+          </summary>
+          <div class="px-5 pb-5 text-gray-700">{i.resposta}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</Section>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

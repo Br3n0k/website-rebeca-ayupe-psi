@@ -1,0 +1,56 @@
+# =====================================================================
+# URLs limpas (sem .html) — Apache / Hostinger
+# =====================================================================
+Options -MultiViews +FollowSymLinks
+
+RewriteEngine On
+
+# 1) Se o usuário acessar /pagina.html, redireciona 301 para /pagina
+RewriteCond %{THE_REQUEST} \s/+([^\s]+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 2) Se o usuário acessar /pagina e existir /pagina.html, serve internamente
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([^/]+(?:/[^/]+)*)/?$ /$1.html [L]
+
+# 3) Página 404 padrão (index caso futuro)
+# ErrorDocument 404 /404.html
+
+# =====================================================================
+# Cache & compressão
+# =====================================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                                "access plus 1 month"
+  ExpiresByType text/html                       "access plus 0 seconds"
+  ExpiresByType application/xml                 "access plus 0 seconds"
+  ExpiresByType text/xml                        "access plus 0 seconds"
+  ExpiresByType image/webp                      "access plus 1 year"
+  ExpiresByType image/avif                      "access plus 1 year"
+  ExpiresByType image/jpeg                      "access plus 1 year"
+  ExpiresByType image/png                       "access plus 1 year"
+  ExpiresByType image/svg+xml                   "access plus 1 year"
+  ExpiresByType text/css                        "access plus 1 year"
+  ExpiresByType application/javascript          "access plus 1 year"
+  ExpiresByType font/woff2                      "access plus 1 year"
+</IfModule>
+
+# =====================================================================
+# Segurança básica
+# =====================================================================
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Bloquear acesso a arquivos sensíveis
+<FilesMatch "^(\.env|composer\.(json|lock)|package(-lock)?\.json)$">
+  Require all denied
+</FilesMatch>

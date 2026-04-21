@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import Section from '../../components/ui/Section.astro';
+import Icon from '../../components/ui/Icon.astro';
+import PageFAQ from '../../components/ui/PageFAQ.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import ServiceSchema from '../../components/ui/ServiceSchema.astro';
+import { CONFIG } from '../../config';
+
+const title = 'Terapia para Depressão | Psicoterapia Online e em Goiânia';
+const description = `Psicoterapia para depressão com abordagem psicanalítica. Atendimento online e em Goiânia com ${CONFIG.nome} (CRP ${CONFIG.crp}).`;
+
+const sinais = [
+  'Tristeza profunda e prolongada',
+  'Perda de interesse em atividades antes prazerosas',
+  'Cansaço e falta de energia',
+  'Alterações de sono e apetite',
+  'Sentimentos de culpa ou inutilidade',
+  'Pensamentos sobre não querer estar aqui',
+];
+
+const faq = [
+  { pergunta: 'Devo procurar psicólogo ou psiquiatra?', resposta: 'São profissionais que se complementam. O psiquiatra avalia se há necessidade de medicação; a psicoterapia cuida da dimensão subjetiva. Em quadros mais intensos, o cuidado conjunto costuma ser indicado.' },
+  { pergunta: 'E se eu não tiver energia para vir às sessões?', resposta: 'Esse é um dos pontos da depressão. O atendimento online ajuda muito nesse momento, evitando deslocamentos. Combinamos o ritmo possível para você.' },
+  { pergunta: 'A psicoterapia funciona para depressão?', resposta: 'Sim, há ampla evidência clínica. O processo permite olhar para a história, sentimentos e padrões que sustentam o sofrimento, ressignificando-os.' },
+];
+---
+
+<Layout title={title} description={description}>
+  <ServiceSchema name="Psicoterapia para depressão" description={description} />
+  <Header />
+  <Breadcrumbs items={[{ label: 'Serviços', href: '/#servicos' }, { label: 'Depressão' }]} />
+  <main>
+    <PageHero
+      title="Terapia para Depressão"
+      subtitle="Um espaço para ser ouvido sem pressa, sem julgamento, e construir caminhos para sair da paralisia da tristeza profunda."
+      ctaMensagem="depressao"
+      ctaLabel="Quero conversar"
+      secondaryHref="/atendimento-online"
+      secondaryLabel="Atendimento online"
+    />
+
+    <Section bg="white">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title">Como a depressão se manifesta</h2>
+        <p class="section-subtitle">Não é frescura, fraqueza ou falta de fé. É um sofrimento real que merece cuidado profissional.</p>
+        <ul class="mt-8 grid sm:grid-cols-2 gap-3">
+          {sinais.map((s) => (
+            <li class="flex items-start gap-3 bg-purple-50 p-4 rounded-lg">
+              <Icon name="check" class="h-5 w-5 text-primary mt-1 shrink-0" />
+              <span class="text-gray-700">{s}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-8 p-5 border-l-4 border-primary bg-purple-50 rounded">
+          <p class="text-gray-800"><strong>Importante:</strong> em situações de ideação suicida ou risco imediato, procure pronto-socorro mais próximo ou o CVV pelo telefone 188 (24h, gratuito).</p>
+        </div>
+      </div>
+    </Section>
+
+    <Section bg="muted">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title text-center">O que esperar do processo</h2>
+        <div class="mt-8 space-y-4 text-gray-700 text-lg">
+          <p>Trabalho com escuta psicanalítica: um espaço onde sua dor pode ser dita e elaborada, no seu tempo, com sigilo e respeito.</p>
+          <p>Não há promessa de soluções rápidas. Há compromisso clínico e ético em caminhar junto com você.</p>
+        </div>
+      </div>
+    </Section>
+
+    <PageFAQ itens={faq} bg="white" />
+
+    <Section bg="gradient">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="section-title">Você não precisa atravessar isso sozinho</h2>
+        <div class="mt-6"><WhatsAppCTA mensagem="depressao" label="Agendar primeira sessão" size="lg" /></div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>

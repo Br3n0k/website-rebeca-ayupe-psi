@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import Section from '../../components/ui/Section.astro';
+import Card from '../../components/ui/Card.astro';
+import PageFAQ from '../../components/ui/PageFAQ.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import ServiceSchema from '../../components/ui/ServiceSchema.astro';
+import { CONFIG } from '../../config';
+
+const title = 'Psicoterapia para Adolescentes | Online e em Goiânia';
+const description = `Atendimento psicológico para adolescentes com abordagem psicanalítica. Espaço de escuta, sigilo e respeito. ${CONFIG.nome}, CRP ${CONFIG.crp}.`;
+
+const temas = [
+  { titulo: 'Identidade e autoestima', texto: 'Quem eu sou, quem quero ser, como me sinto em relação ao próprio corpo e às escolhas.' },
+  { titulo: 'Relações e vínculos', texto: 'Família, amizades, relacionamentos amorosos, redes sociais e sentimentos de exclusão.' },
+  { titulo: 'Escola e futuro', texto: 'Pressão por desempenho, escolhas profissionais, ansiedade frente ao vestibular.' },
+  { titulo: 'Sofrimento emocional', texto: 'Ansiedade, tristeza, automutilação, conflitos internos que pedem espaço para serem ditos.' },
+];
+
+const faq = [
+  { pergunta: 'Como funciona com pais ou responsáveis?', resposta: 'O contato inicial costuma ser com os responsáveis para entender a demanda. As sessões com o adolescente são individuais e respeitam o sigilo, salvo situações de risco que precisam ser comunicadas.' },
+  { pergunta: 'A partir de que idade você atende?', resposta: 'Trabalho com adolescentes a partir de 12 anos. Para crianças menores, posso indicar colegas com formação específica.' },
+  { pergunta: 'O adolescente precisa querer fazer terapia?', resposta: 'O ideal é sim, mas muitas vezes a vontade aparece depois das primeiras sessões. Conversamos com a família para construir esse espaço com leveza.' },
+];
+---
+
+<Layout title={title} description={description}>
+  <ServiceSchema name="Psicoterapia para adolescentes" description={description} />
+  <Header />
+  <Breadcrumbs items={[{ label: 'Serviços', href: '/#servicos' }, { label: 'Adolescentes' }]} />
+  <main>
+    <PageHero
+      title="Psicoterapia para Adolescentes"
+      subtitle="Um espaço próprio, com sigilo e respeito, onde o adolescente pode ser ouvido em sua singularidade."
+      ctaMensagem="geral"
+      secondaryHref="/sobre"
+      secondaryLabel="Sobre minha abordagem"
+    />
+
+    <Section bg="white">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="section-title text-center">Temas frequentes na clínica com adolescentes</h2>
+        <div class="grid md:grid-cols-2 gap-6 mt-10">
+          {temas.map((t) => (
+            <Card accent>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{t.titulo}</h3>
+              <p class="text-gray-700">{t.texto}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Section>
+
+    <Section bg="muted">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-title text-center">Sigilo e ética</h2>
+        <p class="section-subtitle text-center">A relação terapêutica é construída sobre confiança. As conversas são confidenciais, dentro do que prevê o Código de Ética do Psicólogo.</p>
+      </div>
+    </Section>
+
+    <PageFAQ itens={faq} bg="white" />
+
+    <Section bg="gradient">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="section-title">Quer marcar uma conversa?</h2>
+        <div class="mt-6"><WhatsAppCTA mensagem="geral" label="Falar pelo WhatsApp" size="lg" /></div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</Layout>
