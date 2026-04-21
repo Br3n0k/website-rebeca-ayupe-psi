@@ -13,6 +13,7 @@ import { CONFIG } from '../../config';
 
 const title = 'Terapia para Ansiedade | Psicoterapia Online e em Goiânia';
 const description = `Psicoterapia para ansiedade com abordagem psicanalítica. Atendimento online e em Goiânia com ${CONFIG.nome} (CRP ${CONFIG.crp}).`;
+const image = '/images/og/servicos-ansiedade.svg';
 
 const sinais = [
   'Preocupação constante e difícil de controlar',
@@ -30,7 +31,7 @@ const faq = [
 ];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
   <ServiceSchema name="Psicoterapia para ansiedade" description={description} />
   <Header />
   <Breadcrumbs items={[{ label: 'Serviços', href: '/#servicos' }, { label: 'Ansiedade' }]} />

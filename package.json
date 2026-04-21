@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "clean": "rm -rf node_modules/.vite",
-    "dev": "bun run clean && astro dev",
-    "build": "bun run clean && astro build",
-    "preview": "bun run clean && astro preview",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {

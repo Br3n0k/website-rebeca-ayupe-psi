@@ -18,8 +18,10 @@ interface Props {
   label?: string;
 }
 
-const { name, class: extraClass = 'w-5 h-5', label } = Astro.props;
-const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'true' };
+const { name, class: extraClass = 'w-5 h-5', label } = Astro.props as Props;
+const a11y = label
+  ? ({ role: 'img', 'aria-label': label } as const)
+  : ({ 'aria-hidden': 'true' } as const);
 ---
 
 {name === 'whatsapp' && (

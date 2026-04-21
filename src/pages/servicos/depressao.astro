@@ -13,6 +13,7 @@ import { CONFIG } from '../../config';
 
 const title = 'Terapia para Depressão | Psicoterapia Online e em Goiânia';
 const description = `Psicoterapia para depressão com abordagem psicanalítica. Atendimento online e em Goiânia com ${CONFIG.nome} (CRP ${CONFIG.crp}).`;
+const image = '/images/og/servicos-depressao.svg';
 
 const sinais = [
   'Tristeza profunda e prolongada',
@@ -30,7 +31,7 @@ const faq = [
 ];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
   <ServiceSchema name="Psicoterapia para depressão" description={description} />
   <Header />
   <Breadcrumbs items={[{ label: 'Serviços', href: '/#servicos' }, { label: 'Depressão' }]} />

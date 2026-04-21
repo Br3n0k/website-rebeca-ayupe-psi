@@ -13,6 +13,7 @@ import { CONFIG } from '../../config';
 
 const title = 'Terapia para Autoconhecimento | Psicanálise Online e em Goiânia';
 const description = `Psicoterapia voltada ao autoconhecimento, com abordagem psicanalítica. Atendimento online e em Goiânia com ${CONFIG.nome} (CRP ${CONFIG.crp}).`;
+const image = '/images/og/servicos-autoconhecimento.svg';
 
 const beneficios = [
   { titulo: 'Compreender escolhas', texto: 'Por que repito certos padrões? O que está por trás das minhas decisões?' },
@@ -28,7 +29,7 @@ const faq = [
 ];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
   <ServiceSchema name="Psicoterapia para autoconhecimento" description={description} />
   <Header />
   <Breadcrumbs items={[{ label: 'Serviços', href: '/#servicos' }, { label: 'Autoconhecimento' }]} />

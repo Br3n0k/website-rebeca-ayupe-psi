@@ -11,9 +11,10 @@ import { CONFIG } from '../config';
 
 const title = `Sobre | ${CONFIG.nome} — Psicóloga (CRP ${CONFIG.crp})`;
 const description = `Conheça ${CONFIG.nome}, psicóloga clínica (CRP ${CONFIG.crp}) com abordagem psicanalítica. Atendimento de adultos e adolescentes, online e em Goiânia.`;
+const image = '/images/og/sobre.svg';
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
   <Header />
   <Breadcrumbs items={[{ label: 'Sobre' }]} />
   <main>

@@ -14,6 +14,7 @@ import { CONFIG } from '../config';
 
 const title = 'Psicoterapia Online | Atendimento por Vídeo em Todo o Brasil';
 const description = `Psicoterapia online com a Psicóloga ${CONFIG.nome} (CRP ${CONFIG.crp}). Atendimento por vídeo para adultos e adolescentes em todo o Brasil, com abordagem psicanalítica.`;
+const image = '/images/og/atendimento-online.svg';
 
 const beneficios = [
   { titulo: 'Conforto e privacidade', texto: 'Sessões no ambiente que você escolher, sem deslocamento.' },
@@ -38,7 +39,7 @@ const faq = [
 ];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
   <ServiceSchema name="Psicoterapia online" description={description} />
   <Header />
   <Breadcrumbs items={[{ label: 'Atendimento Online' }]} />

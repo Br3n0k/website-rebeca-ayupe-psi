@@ -7,6 +7,7 @@ import retrato from '../assets/rebeca_ayupe3.avif';
 
 const title = `${CONFIG.nome} | Links`;
 const description = `Links oficiais da Psicóloga ${CONFIG.nome} (CRP ${CONFIG.crp}): WhatsApp, Instagram, agendamento e páginas do site.`;
+const image = '/images/og/links.svg';
 
 const whatsappHref = `https://wa.me/${CONFIG.whatsappFormatado}?text=${CONFIG.mensagens.geral}`;
 
@@ -35,8 +36,8 @@ const links: LinkItem[] = [
 ];
 ---
 
-<Layout title={title} description={description}>
-  <main class="min-h-screen bg-gradient-to-br from-violet-50 via-white to-purple-50 px-4 py-10">
+<Layout title={title} description={description} image={image}>
+  <main class="min-h-screen bg-linear-to-br from-violet-50 via-white to-purple-50 px-4 py-10">
     <div class="max-w-md mx-auto">
       <header class="text-center mb-8">
         <Image

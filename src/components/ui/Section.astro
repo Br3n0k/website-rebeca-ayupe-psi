@@ -6,9 +6,9 @@ interface Props {
   as?: 'section' | 'article';
 }
 
-const { id, bg = 'white', class: extraClass = '', as: Tag = 'section' } = Astro.props;
+const { id, bg = 'white', class: extraClass = '', as: Tag = 'section' } = Astro.props as Props;
 
-const bgs = {
+const bgs: Record<NonNullable<Props['bg']>, string> = {
   white: 'bg-white',
   muted: 'bg-purple-50',
   gradient: 'bg-gradient-to-br from-violet-50 to-white',

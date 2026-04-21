@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Arquivos que nao devem ser rastreados nem indexados
+Disallow: /obrigado
+
+# Sitemap principal
+Sitemap: https://psirebecaayupe.com.br/sitemap-index.xml

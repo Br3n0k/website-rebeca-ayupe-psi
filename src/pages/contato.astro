@@ -8,9 +8,10 @@ import { CONFIG } from '../config';
 
 const title = `Contato | ${CONFIG.nome} — Psicóloga`;
 const description = `Entre em contato com a Psicóloga ${CONFIG.nome} (CRP ${CONFIG.crp}) por WhatsApp, e-mail ou Instagram. Atendimento online e em Goiânia.`;
+const image = '/images/og/contato.svg';
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
   <Header />
   <Breadcrumbs items={[{ label: 'Contato' }]} />
   <main>

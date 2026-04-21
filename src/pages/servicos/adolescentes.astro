@@ -13,6 +13,7 @@ import { CONFIG } from '../../config';
 
 const title = 'Psicoterapia para Adolescentes | Online e em Goiânia';
 const description = `Atendimento psicológico para adolescentes com abordagem psicanalítica. Espaço de escuta, sigilo e respeito. ${CONFIG.nome}, CRP ${CONFIG.crp}.`;
+const image = '/images/og/servicos-adolescentes.svg';
 
 const temas = [
   { titulo: 'Identidade e autoestima', texto: 'Quem eu sou, quem quero ser, como me sinto em relação ao próprio corpo e às escolhas.' },
@@ -28,7 +29,7 @@ const faq = [
 ];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
   <ServiceSchema name="Psicoterapia para adolescentes" description={description} />
   <Header />
   <Breadcrumbs items={[{ label: 'Serviços', href: '/#servicos' }, { label: 'Adolescentes' }]} />

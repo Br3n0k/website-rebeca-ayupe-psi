@@ -1,8 +1,38 @@
+const rawWhatsapp = import.meta.env.WHATSAPP || '+5562986510128';
+const whatsappDigits = rawWhatsapp.replace(/\D/g, '');
+
+function formatWhatsappForDisplay(phoneDigits: string) {
+  const hasBrazilCode = phoneDigits.startsWith('55');
+  const localDigits = hasBrazilCode ? phoneDigits.slice(2) : phoneDigits;
+
+  if (localDigits.length === 11) {
+    const ddd = localDigits.slice(0, 2);
+    const prefix = localDigits.slice(2, 7);
+    const suffix = localDigits.slice(7);
+    return hasBrazilCode
+      ? `+55 (${ddd}) ${prefix}-${suffix}`
+      : `(${ddd}) ${prefix}-${suffix}`;
+  }
+
+  if (localDigits.length === 10) {
+    const ddd = localDigits.slice(0, 2);
+    const prefix = localDigits.slice(2, 6);
+    const suffix = localDigits.slice(6);
+    return hasBrazilCode
+      ? `+55 (${ddd}) ${prefix}-${suffix}`
+      : `(${ddd}) ${prefix}-${suffix}`;
+  }
+
+  return rawWhatsapp;
+}
+
 // Configurações do site carregadas do .env
 export const CONFIG = {
   // Contato
-  whatsapp: import.meta.env.WHATSAPP || '+5562986510128',
-  whatsappFormatado: import.meta.env.WHATSAPP?.replace(/^\+/, '') || '5562986510128',
+  whatsapp: rawWhatsapp,
+  whatsappFormatado: whatsappDigits,
+  whatsappVisual: formatWhatsappForDisplay(whatsappDigits),
+  whatsappHref: `tel:+${whatsappDigits}`,
   email: import.meta.env.EMAIL || 'psirebecaayupe@gmail.com',
   instagram: import.meta.env.INSTAGRAM || 'psirebeca_ayupe',
 
@@ -36,8 +66,4 @@ export const CONFIG = {
   estado: 'GO',
   pais: 'BR',
   crp: '09/20699',
-
-  
-
-  //
 };

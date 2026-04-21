@@ -12,6 +12,7 @@ import { CONFIG } from '../config';
 
 const title = `Psicóloga em Goiânia | ${CONFIG.nome} — CRP ${CONFIG.crp}`;
 const description = `Psicóloga em Goiânia (GO) com abordagem psicanalítica. Atendimento online e presencial para adultos e adolescentes. ${CONFIG.nome}, CRP ${CONFIG.crp}.`;
+const image = '/images/og/psicologa-goiania.svg';
 
 const publico = [
   { titulo: 'Adultos', texto: 'Pessoas em busca de autoconhecimento, lidando com ansiedade, luto, relações ou momentos de transição.' },
@@ -27,7 +28,7 @@ const faq = [
 ];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
   <Header />
   <Breadcrumbs items={[{ label: 'Psicóloga em Goiânia' }]} />
   <main>
