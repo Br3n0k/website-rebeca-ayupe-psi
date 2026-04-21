@@ -51,7 +51,7 @@ const links = [
   const button = document.getElementById('mobile-menu-button');
   const menu = document.getElementById('mobile-menu');
 
-  const setMenuState = (isOpen) => {
+  const setMenuState = (isOpen: boolean) => {
     if (!menu || !button) return;
     menu.classList.toggle('hidden', !isOpen);
     menu.hidden = !isOpen;

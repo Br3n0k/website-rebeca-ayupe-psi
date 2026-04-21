@@ -6,12 +6,12 @@ import { CONFIG } from '../config';
 import retrato from '../assets/rebeca_ayupe3.avif';
 
 const title = `${CONFIG.nome} | Links`;
-const description = `Links oficiais da Psicóloga ${CONFIG.nome} (CRP ${CONFIG.crp}): WhatsApp, Instagram, agendamento e páginas do site.`;
+const description = `Links oficiais da Psicóloga ${CONFIG.nome} (CRP ${CONFIG.crp}): WhatsApp, Instagram, e-mail, site oficial e perfil no PsyMeet.`;
 const image = '/images/og/links.svg';
 
 const whatsappHref = `https://wa.me/${CONFIG.whatsappFormatado}?text=${CONFIG.mensagens.geral}`;
 
-type IconName = 'whatsapp' | 'instagram' | 'mail' | 'arrow-right' | 'check-circle' | 'link';
+type IconName = 'whatsapp' | 'instagram' | 'mail' | 'arrow-right' | 'link';
 
 interface LinkItem {
   href: string;
@@ -25,19 +25,14 @@ interface LinkItem {
 const links: LinkItem[] = [
   { href: whatsappHref, label: 'Agendar pelo WhatsApp', sub: 'Resposta rápida', icon: 'whatsapp', primary: true, external: true },
   { href: CONFIG.instagramUrl, label: `@${CONFIG.instagram}`, sub: 'Instagram', icon: 'instagram', external: true },
-  { href: '/atendimento-online', label: 'Atendimento online', sub: 'Para todo o Brasil', icon: 'arrow-right' },
-  { href: '/psicologa-goiania', label: 'Psicóloga em Goiânia', sub: 'Atendimento presencial e online', icon: 'arrow-right' },
-  { href: '/servicos/ansiedade', label: 'Terapia para ansiedade', icon: 'check-circle' },
-  { href: '/servicos/depressao', label: 'Terapia para depressão', icon: 'check-circle' },
-  { href: '/servicos/adolescentes', label: 'Atendimento de adolescentes', icon: 'check-circle' },
-  { href: '/servicos/autoconhecimento', label: 'Autoconhecimento', icon: 'check-circle' },
+  { href: CONFIG.psymeetUrl, label: 'Perfil no PsyMeet', sub: 'Plataforma de agendamento', icon: 'link', external: true },
   { href: `mailto:${CONFIG.email}`, label: CONFIG.email, sub: 'E-mail', icon: 'mail', external: true },
-  { href: '/', label: 'Site oficial', icon: 'link' },
+  { href: '/', label: 'Site oficial', sub: 'psirebecaayupe.com.br', icon: 'arrow-right' },
 ];
 ---
 
 <Layout title={title} description={description} image={image}>
-  <main class="min-h-screen bg-linear-to-br from-violet-50 via-white to-purple-50 px-4 py-10">
+  <main id="conteudo-principal" class="min-h-screen bg-linear-to-br from-violet-50 via-white to-purple-50 px-4 py-10">
     <div class="max-w-md mx-auto">
       <header class="text-center mb-8">
         <Image
@@ -61,7 +56,8 @@ const links: LinkItem[] = [
               href={l.href}
               target={l.external ? '_blank' : undefined}
               rel={l.external ? 'noopener noreferrer' : undefined}
-              class={`flex items-center gap-4 p-4 rounded-xl shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${l.primary ? 'bg-primary text-white' : 'bg-white text-gray-900'}`}
+              aria-label={l.external ? `${l.label} (abre em nova aba)` : l.label}
+              class={`flex items-center gap-4 p-4 rounded-xl shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 min-h-16 ${l.primary ? 'bg-primary text-white' : 'bg-white text-gray-900'}`}
             >
               <span class={`flex items-center justify-center w-10 h-10 rounded-full shrink-0 ${l.primary ? 'bg-white/15' : 'bg-primary/10 text-primary'}`}>
                 <Icon name={l.icon} class="h-5 w-5" />

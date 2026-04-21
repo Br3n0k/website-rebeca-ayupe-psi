@@ -9,21 +9,17 @@ function formatWhatsappForDisplay(phoneDigits: string) {
     const ddd = localDigits.slice(0, 2);
     const prefix = localDigits.slice(2, 7);
     const suffix = localDigits.slice(7);
-    return hasBrazilCode
-      ? `+55 (${ddd}) ${prefix}-${suffix}`
-      : `(${ddd}) ${prefix}-${suffix}`;
+    return `(${ddd}) ${prefix}-${suffix}`;
   }
 
   if (localDigits.length === 10) {
     const ddd = localDigits.slice(0, 2);
     const prefix = localDigits.slice(2, 6);
     const suffix = localDigits.slice(6);
-    return hasBrazilCode
-      ? `+55 (${ddd}) ${prefix}-${suffix}`
-      : `(${ddd}) ${prefix}-${suffix}`;
+    return `(${ddd}) ${prefix}-${suffix}`;
   }
 
-  return rawWhatsapp;
+  return localDigits || rawWhatsapp.replace(/^\+?55/, '').trim();
 }
 
 // Configurações do site carregadas do .env
@@ -42,6 +38,7 @@ export const CONFIG = {
   // URLs e links externos
   siteUrl: import.meta.env.URL || 'https://psirebecaayupe.com.br',
   instagramUrl: `https://instagram.com/${import.meta.env.INSTAGRAM || 'psirebeca_ayupe'}`,
+  psymeetUrl: 'https://www.psymeetsocial.com/psicologo/rebeca-ayupe-ferreira',
   
   // Informações profissionais
   nome: 'Rebeca Ayupe Ferreira',

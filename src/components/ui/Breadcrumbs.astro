@@ -30,7 +30,7 @@ const schema = {
       {allItems.map((c, i) => (
         <li class="flex items-center gap-2">
           {c.href && i < allItems.length - 1 ? (
-            <a href={c.href} class="hover:text-primary">{c.label}</a>
+            <a href={c.href} class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-sm">{c.label}</a>
           ) : (
             <span class="text-gray-900 font-medium" aria-current="page">{c.label}</span>
           )}

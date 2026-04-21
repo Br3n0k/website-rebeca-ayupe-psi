@@ -29,10 +29,10 @@ const contatoItens = [
           Psicoterapia online para adultos e adolescentes
         </p>
         <div class="flex space-x-4">
-          <a href={CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white hover:text-primary transition-colors duration-300">
+          <a href={CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white hover:text-primary transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-sm">
             <Icon name="instagram" class="h-6 w-6" />
           </a>
-          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-white hover:text-primary transition-colors duration-300">
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-white hover:text-primary transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-sm">
             <Icon name="whatsapp" class="h-6 w-6" />
           </a>
         </div>
@@ -43,7 +43,7 @@ const contatoItens = [
         <ul class="space-y-3">
           {navLinks.map(({ href, label }) => (
             <li>
-              <a href={href} class="text-gray-400 hover:text-white transition-colors duration-300">{label}</a>
+              <a href={href} class="text-gray-400 hover:text-white transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-sm">{label}</a>
             </li>
           ))}
         </ul>
@@ -67,7 +67,7 @@ const contatoItens = [
         &copy; {currentYear} {CONFIG.nome} - {CONFIG.titulo}. Todos os direitos reservados.
       </p>
       <p class="text-center text-gray-500 text-sm mt-2">
-        Desenvolvido por <a href="https://noktech.com.br/" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary-light transition-colors">NokTech Sistemas</a>
+        Desenvolvido por <a href="https://noktech.com.br/" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-sm">NokTech Sistemas</a>
       </p>
     </div>
   </div>
